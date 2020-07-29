@@ -2,3 +2,12 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.card {
+ width: 33%;
+};
