@@ -31,5 +31,17 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+  User.associate = function(models) {
+    // Associating User with trade request
+    // When a user is deleted, also delete any associated trade requests
+    User.hasMany(models.tradeReq, {
+      onDelete: "cascade"
+    });
+    // Associating User with trade response
+    // When a user is deleted, also delete any associated trade response
+    User.hasMany(models.tradeRes, {
+      onDelete: "cascade"
+    });
+  };
   return User;
 };
