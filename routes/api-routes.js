@@ -48,27 +48,27 @@ module.exports = function(app) {
   });
 
   // get all posted rocks
-  app.get("/api/rock/posted", function(req, res){
-    db.Rock.findAll({
+  app.get("/api/rocks/posted", function(req, res){
+    db.rocks.findAll({
       where: {
         posted: true
       }
     }).then(function (dbRocks){
-      res.json(dbStories);
+      res.json(dbRocks);
     }).catch(function(err){res.status(500).end()})
   })
 
-    // get all posted rocks
-    app.get("/api/rock/:id", function(req, res){
-      db.Rock.findOne({
+    // get all users rocks
+    app.get("/api/rocks/:id", function(req, res){
+      db.rocks.findOne({
         where: {
           id: req.params.id,
           $or:[
             {published:true}
           ]
         }
-      }).then(function (dbRocks){
-        res.json(dbStories);
+      }).then(function (dbrocks){
+        res.json(dbrocks);
       }).catch(function(err){res.status(500).end()})
     })
   // allow a logged in user to post new rock
