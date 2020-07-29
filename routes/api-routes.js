@@ -46,4 +46,32 @@ module.exports = function(app) {
       });
     }
   });
+
+  // get all posted rocks
+  app.get("/api/rock/posted", function(req, res){
+    db.Rock.findAll({
+      where: {
+        posted: true
+      }
+    }).then(function (dbRocks){
+      res.json(dbStories);
+    }).catch(function(err){res.status(500).end()})
+  })
+
+    // get all posted rocks
+    app.get("/api/rock/:id", function(req, res){
+      db.Rock.findOne({
+        where: {
+          id: req.params.id,
+          $or:[
+            {published:true}
+          ]
+        }
+      }).then(function (dbRocks){
+        res.json(dbStories);
+      }).catch(function(err){res.status(500).end()})
+    })
+  // allow a logged in user to post new rock
+  //allow user to delete themselves
+  // allow user to update their post
 };
