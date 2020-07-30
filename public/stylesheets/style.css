@@ -3,6 +3,21 @@ form.login {
   margin-top: 50px;
 }
 
+.jumbotron-fluid {
+  background-color: #757575;
+  color: #fafafa;
+}
+.container {
+  font-style: italic;
+  height: 150px;
+  
+}
+#sellerSubBtn {
+  background-color: #757575 ;
+  color: #fafafa;
+}
+
+
 img {
   width: 200px;
   height: 200px;
@@ -11,3 +26,4 @@ img {
 .card {
  width: 33%;
 };
+
