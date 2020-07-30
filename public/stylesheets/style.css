@@ -2,6 +2,7 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
 .jumbotron-fluid {
   background-color: #757575;
   color: #fafafa;
@@ -15,4 +16,14 @@ form.login {
   background-color: #757575 ;
   color: #fafafa;
 }
+
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.card {
+ width: 33%;
+};
 
