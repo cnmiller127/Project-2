@@ -25,7 +25,6 @@ $("#empty-div").append(
       <span class="card-title grey-text text-darken-4">Rock example<i class="material-icons right">close</i></span>
       <p>Here is some more information about this rock that is only revealed once clicked on.</p>
     </div>
-  </div>`
-);
+  </div>`);
 
 // When user clicks on 'trade rocks' button, all selected rocks should transfer to the 'buyer/trade center' page (buyer.html)
