@@ -47,35 +47,7 @@ module.exports = function(app) {
     }
   });
 
-  // NEW ROUTES ADDED BY TEAM
-  // get all users rocks (inventory)
-  app.get("/api/user/rocks", function(req, res) {
-    db.Rock.findAll({ include: [db.User] })
-      .then(function(dbrocks) {
-        res.json(dbrocks);
-      })
-      .catch(function() {
-        res.status(500).end();
-      });
-  });
-  // Get specific rock in user inventroy
-  app.get("/api/user/rocks/:id", function(req, res) {
-    db.Rock.findOne({
-      where: {
-        id: req.params.id
-      }, 
-      include: [db.User]
-    })
-      .then(function(dbrocks) {
-        res.json(dbrocks);
-      })
-      .catch(function() {
-        res.status(500).end();
-      });
-  });
-  // allow user to update their post
-  // app.put("/api/user/sellerData")
-  //allow user to delete themselves
+  // NEW ROUTE ADDED TO DELETE USER
   app.delete("/api/user/:id", function(req, res) {
     db.User.destroy({
       where: {
