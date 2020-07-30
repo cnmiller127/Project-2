@@ -46,22 +46,8 @@ module.exports = function(app) {
       });
     }
   });
-  // NEW POSTS
-  // get all posted rocks. We want user to be able to see ALL posts( their own and others)
-  app.get("/api/rock/sellerDataAll", function(req, res) {
-    db.Rock.findAll({
-      where: {
-        posted: true
-      }
-    })
-      .then(function(dbRock) {
-        res.json(dbRock);
-      })
-      .catch(function() {
-        res.status(500).end();
-      });
-  });
 
+  // NEW ROUTES ADDED BY TEAM
   // get all users rocks (inventory)
   app.get("/api/user/rocks", function(req, res) {
     db.Rock.findAll({ include: [db.User] })
@@ -72,13 +58,13 @@ module.exports = function(app) {
         res.status(500).end();
       });
   });
-  // Get specific user rock in inventroy
+  // Get specific rock in user inventroy
   app.get("/api/user/rocks/:id", function(req, res) {
     db.Rock.findOne({
       where: {
-        id: req.params.id,
-        $or: [{ published: true }]
-      }
+        id: req.params.id
+      }, 
+      include: [db.User]
     })
       .then(function(dbrocks) {
         res.json(dbrocks);
@@ -87,18 +73,10 @@ module.exports = function(app) {
         res.status(500).end();
       });
   });
-  // allow a logged in user to post new rock
-  app.post("/api/rock/sellerData", function(req, res) {
-    db.Rock.create(req.body, { include: User })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      })
-      .catch(err => console.log(err));
-  });
   // allow user to update their post
   // app.put("/api/user/sellerData")
   //allow user to delete themselves
-  app.delete("/api/users/:id", function(req, res) {
+  app.delete("/api/user/:id", function(req, res) {
     db.User.destroy({
       where: {
         id: req.params.id
