@@ -6,7 +6,6 @@ $(document).ready(function () {
   });
 });
 
-//When user enters information on seller page, the new rock should should up here
 $("#empty-div").append(
   `<div class="card">
     <div class="card-image waves-effect waves-block waves-light">
@@ -26,5 +25,3 @@ $("#empty-div").append(
       <p>Here is some more information about this rock that is only revealed once clicked on.</p>
     </div>
   </div>`);
-
-// When user clicks on 'trade rocks' button, all selected rocks should transfer to the 'buyer/trade center' page (buyer.html)
