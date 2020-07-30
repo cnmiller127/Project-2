@@ -1,51 +1,45 @@
-// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
-var bcrypt = require("bcryptjs");
-// Creating our User model
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    // The email cannot be null, and must be a proper email before creation
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
+var db = require("../models");
+
+module.exports = function(app) {
+  app.get("/api/authors", function(req, res) {
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.Author.findAll({
+      include: [db.Post]
+    }).then(function(dbAuthor) {
+      res.json(dbAuthor);
+    });
+  });
+
+  app.get("/api/authors/:id", function(req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.Author.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Post]
+    }).then(function(dbAuthor) {
+      res.json(dbAuthor);
+    });
+  });
+
+  app.post("/api/authors", function(req, res) {
+    db.Author.create(req.body).then(function(dbAuthor) {
+      res.json(dbAuthor);
+    });
+  });
+
+  app.delete("/api/authors/:id", function(req, res) {
+    db.Author.destroy({
+      where: {
+        id: req.params.id
       }
-    },
-    // The password cannot be null
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  });
-  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  User.prototype.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-  };
-  // Hooks are automatic methods that run during various phases of the User Model lifecycle
-  // In this case, before a User is created, we will automatically hash their password
-  User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(
-      user.password,
-      bcrypt.genSaltSync(10),
-      null
-    );
-  });
-  User.associate = function(models) {
-
-    User.hasMany(models.Rock, {
-
-    // Associating User with trade request
-    // When a user is deleted, also delete any associated trade requests
-    User.hasMany(models.tradeReq, {
-      onDelete: "cascade"
+    }).then(function(dbAuthor) {
+      res.json(dbAuthor);
     });
-    // Associating User with trade response
-    // When a user is deleted, also delete any associated trade response
-    User.hasMany(models.tradeRes, {
+  });
 
-      onDelete: "cascade"
-    });
-  };
-  return User;
 };
