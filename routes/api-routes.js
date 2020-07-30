@@ -46,4 +46,50 @@ module.exports = function(app) {
       });
     }
   });
+
+  // get all posted rocks
+  app.get("/api/rocks/posted", function(req, res) {
+    db.TradeReq.findAll({
+      where: {
+        posted: true
+      }
+    })
+      .then(function(dbTradeReq) {
+        res.json(dbTradeReq);
+      })
+      .catch(function() {
+        res.status(500).end();
+      });
+  });
+
+  // get all users rocks
+  app.get("/api/rocks/:id", function(req, res) {
+    db.rocks
+      .findAll({ include: [db.User] })
+      .then(function(dbrocks) {
+        res.json(dbrocks);
+      })
+      .catch(function() {
+        res.status(500).end();
+      });
+  });
+  // Get specific user rock
+  app.get("/api/rocks/:id", function(req, res) {
+    db.rocks
+      .findOne({
+        where: {
+          id: req.params.id,
+          $or: [{ published: true }]
+        }
+      })
+      .then(function(dbrocks) {
+        res.json(dbrocks);
+      })
+      .catch(function() {
+        res.status(500).end();
+      });
+  });
+  // allow a logged in user to post new rock
+  //allow user to delete themselves
+  // allow user to update their post
 };
