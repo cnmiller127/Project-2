@@ -5,7 +5,7 @@ var bcrypt = require("bcryptjs");
 module.exports = function(sequelize, DataTypes) {
   var Rock = sequelize.define("Rock", {
     // The email cannot be null, and must be a proper email before creation
-    type: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -13,25 +13,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     // The password cannot be null
-    color: {
+    image: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
-        len: [1]
+        isURL: true
       }
-    },
-    size: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
-    shape: {
-      type: DataTypes.TEXT
-    },
-    texture: {
-      type: DataTypes.TEXT
     },
     posted: {
       type: DataTypes.BOOLEAN,

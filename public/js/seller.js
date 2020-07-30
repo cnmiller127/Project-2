@@ -8,13 +8,14 @@ $(document).ready(function() {
   sellerForm.on("submit", function(event) {
     event.preventDefault();
     //var sellerData = {
-     // rockName: rockName.val().trim(),
-     // rockImage: rockImage.val().trim(),
-     // Desc: Desc.val().trim()
+    // rockName: rockName.val().trim(),
+    // rockImage: rockImage.val().trim(),
+    // Desc: Desc.val().trim()
     //};
 
     // Does a post to the sellerdata route. If successful, we are redirected to the members page
     // Otherwise we log any errors
+    // eslint-disable-next-line no-unused-vars
     function sellerData(rockName, rockImage, Desc) {
       $.post("/api/sellerData", {
         rockName: rockName,
