@@ -2,8 +2,7 @@
     "env": {
       "browser": true,
       "commonjs": true,
-      "node": true,
-      "es6": true
+      "node": true
     },
     "rules": {
       "no-duplicate-case": "error",
