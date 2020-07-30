@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
 </head>
+
 <body>
-    
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>Welcome</h1>
+            <p>Please Enter data to Sell a Product.</p>
+        </div>
+    </div>
+    <div class="row">
+        <form class="col s12 sellerForm">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Enter the name of the rock!" id="Rock_name" type="text" class="validate">
+                    <label for="Rock Name">Name of the Rock</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Enter the url of the Rock image!" id="url" type="url" class="validate">
+                    <label for="url">Image url</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix2">Rock Description</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light btn-large" type="submit" name="action" id="sellerSubBtn">Submit
+                <i class="material-icons right">send</i>
+              </button>
+        </form>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/members.js"></script>
+    <script type="text/javascript" src="js/seller.js"></script>
 
 </body>
+
 </html>
