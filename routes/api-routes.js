@@ -48,7 +48,7 @@ module.exports = function(app) {
   });
   // NEW POSTS
   // get all posted rocks. We want user to be able to see ALL posts( their own and others)
-  app.get("/api/rock/posted", function(req, res) {
+  app.get("/api/rock/sellerDataAll", function(req, res) {
     db.TradeReq.findAll({
       where: {
         posted: true
@@ -62,7 +62,7 @@ module.exports = function(app) {
       });
   });
 
-  // get all users rocks
+  // get all users rocks (inventory)
   app.get("/api/user/rocks", function(req, res) {
     db.Rock.findAll({ include: [db.User] })
       .then(function(dbrocks) {
@@ -72,7 +72,7 @@ module.exports = function(app) {
         res.status(500).end();
       });
   });
-  // Get specific user rock
+  // Get specific user rock in inventroy
   app.get("/api/user/rocks/:id", function(req, res) {
     db.Rock.findOne({
       where: {
@@ -88,7 +88,7 @@ module.exports = function(app) {
       });
   });
   // allow a logged in user to post new rock
-  app.post("/api/rock/post", function(req, res) {
+  app.post("/api/rock/sellerData", function(req, res) {
     db.TradeReq.create(req.body, { include: User })
       .then(function(dbPost) {
         res.json(dbPost);
@@ -96,7 +96,7 @@ module.exports = function(app) {
       .catch(err => console.log(err));
   });
   // allow user to update their post
-  app.put("/api/")
+  // app.put("/api/")
   //allow user to delete themselves
   app.delete("/api/users/:id", function(req, res) {
     db.User.destroy({
