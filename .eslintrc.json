@@ -2,10 +2,9 @@
     "env": {
       "browser": true,
       "commonjs": true,
-      "node": true
+      "node": true,
+      "es6": true
     },
-    "extends": "prettier",
-    "plugins": ["prettier"],
     "rules": {
       "no-duplicate-case": "error",
       "no-empty": "error",
@@ -22,8 +21,7 @@
       "camelcase": "error",
       "indent": ["error", 2],
       "quotes": ["error", "double"],
-      "semi": ["error", "always"],
-      "prettier/prettier": "error"
+      "semi": ["error", "always"]
     }
   }
   
