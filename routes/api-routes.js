@@ -48,29 +48,41 @@ module.exports = function(app) {
   });
 
   // get all posted rocks
-  app.get("/api/rocks/posted", function(req, res){
-    db.rocks.findAll({
+  app.get("/api/rock/posted", function(req, res) {
+    db.Rock.findAll({
       where: {
         posted: true
       }
-    }).then(function (dbRocks){
-      res.json(dbRocks);
-    }).catch(function(err){res.status(500).end()})
-  })
-
-    // get all users rocks
-    app.get("/api/rocks/:id", function(req, res){
-      db.rocks.findOne({
-        where: {
-          id: req.params.id,
-          $or:[
-            {published:true}
-          ]
-        }
-      }).then(function (dbrocks){
-        res.json(dbrocks);
-      }).catch(function(err){res.status(500).end()})
     })
+      .then(function(dbRocks) {
+        res.json(dbRocks);
+      })
+      // eslint-disable-next-line no-unused-vars
+      .catch(function(err) {
+        res.status(500).end();
+      });
+  });
+
+  // get specific rock
+  app.get("/api/rocks/:id", function(req, res) {
+    if (req.user) {
+      id = req.user.id;
+    }
+    db.Rock.findOne({
+      where: {
+        id: req.params.id,
+        $or: [{ UserId: userId }, { published: true }]
+      }
+    })
+      .then(function(dbrocks) {
+        res.json(dbrocks);
+      })
+      // eslint-disable-next-line no-unused-vars
+      .catch(function(err) {
+        res.status(500).end();
+      });
+  });
+
   // allow a logged in user to post new rock
   //allow user to delete themselves
   // allow user to update their post
