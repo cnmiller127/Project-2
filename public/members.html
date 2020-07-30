@@ -5,7 +5,9 @@
   <title>Passport Authentication</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 
@@ -25,8 +27,25 @@
         <h2>Welcome <span class="member-name"></span></h2>
       </div>
     </div>
+    <!-- when clicks on  add new rock, it sends to sellers page-->
+    <a href="seller.html" class=" add-new-rock btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="images/office.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Rock example<i class="material-icons right">more_vert</i></span>
+        <!-- Link below should take them to the main inventory site?? -->
+        <p><a class="trade-link" href="#">Trade rock</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Rock example<i class="material-icons right">close</i></span>
+        <p>Here is some more information about this rock that is only revealed once clicked on.</p>
+      </div>
+    </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/members.js"></script>
 
