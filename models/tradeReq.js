@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   //This will change depending on what we obtain from user on front end trade response form.
-  var tradeReq = sequelize.define("tradeReq", {
+  var TradeReq = sequelize.define("tradeReq", {
     rockName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,14 +21,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  tradeReq.associate = function(models) {
+  TradeReq.associate = function(models) {
     // We're saying that a Post should belong to an Author
     // A Post can't be created without an Author due to the foreign key constraint
-    tradeReq.belongsTo(models.User, {
+    TradeReq.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
   };
-  return tradeReq;
+  return TradeReq;
 };

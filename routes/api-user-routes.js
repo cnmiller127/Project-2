@@ -47,43 +47,42 @@ module.exports = function(app) {
     }
   });
 
-  // get all posted rocks
-  app.get("/api/rock/posted", function(req, res) {
-    db.Rock.findAll({
-      where: {
-        posted: true
-      }
-    })
-      .then(function(dbRocks) {
-        res.json(dbRocks);
+  // NEW ROUTES ADDED BY TEAM
+  // get all users rocks (inventory)
+  app.get("/api/user/rocks", function(req, res) {
+    db.Rock.findAll({ include: [db.User] })
+      .then(function(dbrocks) {
+        res.json(dbrocks);
       })
-      // eslint-disable-next-line no-unused-vars
-      .catch(function(err) {
+      .catch(function() {
         res.status(500).end();
       });
   });
-
-  // get specific rock
-  app.get("/api/rocks/:id", function(req, res) {
-    if (req.user) {
-      id = req.user.id;
-    }
+  // Get specific rock in user inventroy
+  app.get("/api/user/rocks/:id", function(req, res) {
     db.Rock.findOne({
       where: {
-        id: req.params.id,
-        $or: [{ UserId: userId }, { published: true }]
-      }
+        id: req.params.id
+      }, 
+      include: [db.User]
     })
       .then(function(dbrocks) {
         res.json(dbrocks);
       })
-      // eslint-disable-next-line no-unused-vars
-      .catch(function(err) {
+      .catch(function() {
         res.status(500).end();
       });
   });
-
-  // allow a logged in user to post new rock
-  //allow user to delete themselves
   // allow user to update their post
+  // app.put("/api/user/sellerData")
+  //allow user to delete themselves
+  app.delete("/api/user/:id", function(req, res) {
+    db.User.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
 };
