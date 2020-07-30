@@ -46,9 +46,9 @@ module.exports = function(app) {
       });
     }
   });
-
-  // get all posted rocks
-  app.get("/api/rocks/posted", function(req, res) {
+  // NEW POSTS
+  // get all posted rocks. We want user to be able to see ALL posts( their own and others)
+  app.get("/api/rock/posted", function(req, res) {
     db.TradeReq.findAll({
       where: {
         posted: true
@@ -63,9 +63,8 @@ module.exports = function(app) {
   });
 
   // get all users rocks
-  app.get("/api/rocks/:id", function(req, res) {
-    db.rocks
-      .findAll({ include: [db.User] })
+  app.get("/api/user/rocks", function(req, res) {
+    db.Rock.findAll({ include: [db.User] })
       .then(function(dbrocks) {
         res.json(dbrocks);
       })
@@ -74,14 +73,13 @@ module.exports = function(app) {
       });
   });
   // Get specific user rock
-  app.get("/api/rocks/:id", function(req, res) {
-    db.rocks
-      .findOne({
-        where: {
-          id: req.params.id,
-          $or: [{ published: true }]
-        }
-      })
+  app.get("/api/user/rocks/:id", function(req, res) {
+    db.Rock.findOne({
+      where: {
+        id: req.params.id,
+        $or: [{ published: true }]
+      }
+    })
       .then(function(dbrocks) {
         res.json(dbrocks);
       })
@@ -90,6 +88,23 @@ module.exports = function(app) {
       });
   });
   // allow a logged in user to post new rock
-  //allow user to delete themselves
+  app.post("/api/rock/post", function(req, res) {
+    db.TradeReq.create(req.body, { include: User })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      })
+      .catch(err => console.log(err));
+  });
   // allow user to update their post
+  app.put("/api/")
+  //allow user to delete themselves
+  app.delete("/api/users/:id", function(req, res) {
+    db.User.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
 };
