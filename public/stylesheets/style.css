@@ -4,8 +4,8 @@ form.login {
 }
 
 .jumbotron-fluid {
-  background-color: #757575;
-  color: #fafafa;
+  background-color: #2bbbad;
+  color: #555555;
 }
 .container {
   font-style: italic;
@@ -13,8 +13,8 @@ form.login {
   
 }
 #sellerSubBtn {
-  background-color: #757575 ;
-  color: #fafafa;
+  background-color: #2bbbad ;
+  color: #555555;
 }
 
 
