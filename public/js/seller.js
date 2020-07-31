@@ -3,7 +3,7 @@ $(document).ready(function () {
   $("#sellerSubBtn").click(function () {
     const name = $("#name").val()? $("#name").val().trim(): "";
     const image = $("#image").val()? $("#image").val().trim(): "";
-    //const desc = $("#desc").val()? $("#desc").val().trim(): "";
+    const desc = $("#desc").val()? $("#desc").val().trim(): "";
 
     // if (!name || !image) {
     //  return;
@@ -12,7 +12,7 @@ $(document).ready(function () {
     const data = {
       name,
       image,
-      //desc
+      desc
     };
 
     console.log("seller data", data);
