@@ -19,6 +19,9 @@ module.exports = function(sequelize, DataTypes) {
         isURL: true
       }
     },
+    description: {
+      type: DataTypes.TEXT
+    },
     posted: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
