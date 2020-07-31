@@ -60,7 +60,9 @@ module.exports = function(app) {
 
   // allow a logged in user to post new rock
   app.post("/api/rock/sellerData", function(req, res) {
-    db.Rock.create(req.body , { include: db.User })
+    const record = Object.assign(req.body, { UserId: 12});
+
+    db.Rock.create(record)
 
       .then(function(dbPost) {
         res.json(dbPost);
