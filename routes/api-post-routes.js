@@ -53,11 +53,17 @@ module.exports = function(app) {
   // allow a logged in user to post new rock up for trade
   app.post("/api/rock/posts", function(req, res) {
     db.Rock.create(req.body, { include: User }, [db.Rock.posted = true])
+
+  // allow a logged in user to post new rock
+  app.post("/api/rock/sellerData", function(req, res) {
+    db.Rock.create(req.body , { include: db.User })
+
       .then(function(dbPost) {
         res.json(dbPost);
       })
       .catch(err => console.log(err));
   });
+
   app.delete("/api/rock/posts/:id", function(req, res) {
     db.Post.destroy({
       where: {
@@ -78,4 +84,5 @@ module.exports = function(app) {
       res.json(dbPost);
     });
   });
+
 };

@@ -19,29 +19,31 @@
         </div>
     </div>
     <div class="row">
-        <form class="col s12 sellerForm">
+        <form id="sellerForm" class="col s12">
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Enter the name of the rock!" id="Rock_name" type="text" class="validate">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <input placeholder="Enter the name of the rock!" id="name" type="text" class="validate">
                     <label for="Rock Name">Name of the Rock</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Enter the url of the Rock image!" id="url" type="url" class="validate">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <input placeholder="Enter the url of the Rock image!" id="image" type="url" class="validate">
                     <label for="url">Image url</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">mode_edit</i>
-                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                    <textarea placeholder= "Please enter Rock color,size...." id="icon_prefix2" class="materialize-textarea" id="desc"></textarea>
                     <label for="icon_prefix2">Rock Description</label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light btn-large" type="submit" name="action" id="sellerSubBtn">Submit
+            <a class="btn waves-effect waves-light btn-large" id="sellerSubBtn">Submit
                 <i class="material-icons right">send</i>
-              </button>
+            </a>
         </form>
     </div>
 
