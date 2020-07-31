@@ -44,7 +44,7 @@ module.exports = function(app) {
   });
   // allow a logged in user to add rock to their inventory
   app.post("/api/user/inventory", function(req, res) {
-    db.Rock.create(req.body, { include: User })
+    db.Rock.create(req.body)
       .then(function(dbPost) {
         res.json(dbPost);
       })
@@ -52,7 +52,11 @@ module.exports = function(app) {
   });
   // allow a logged in user to post new rock up for trade
   app.post("/api/rock/posts", function(req, res) {
-    db.Rock.create(req.body, { include: User }, [db.Rock.posted = true])
+    db.Rock.create(req.body, { include: User }, [db.Rock.posted = true]).then(function(dbPost){
+      res.json(dbPost);
+    })
+      .catch(err => console.log(err));
+  });
 
   // allow a logged in user to post new rock
   app.post("/api/rock/sellerData", function(req, res) {
@@ -84,4 +88,4 @@ module.exports = function(app) {
       res.json(dbPost);
     });
   });
-}
+};
