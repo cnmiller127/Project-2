@@ -1,17 +1,14 @@
 form.signup,
 form.login {
   margin-top: 50px;
+  color: black;
 }
 
 .jumbotron-fluid {
-  background-color: #2bbbad;
-  color: #555555;
+  background-color: gainsboro;
+  color: black;
 }
-.container {
-  font-style: italic;
-  height: 150px;
-  
-}
+
 #sellerSubBtn {
   background-color: #2bbbad ;
   color: #555555;
