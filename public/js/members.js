@@ -27,7 +27,9 @@ function renderRocks(){
   $.get("/api/user/inventory").then(function(inv){
     console.log(inv);
     for(var i=0; i < inv.length; i++){
-      $("#empty-div").append(`<div class="card">
+      console.log(inv[i].id);
+      $("#empty-div").append(
+        `<div class="card card-inventory">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src=${inv[i].image}>
         </div>
