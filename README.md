@@ -19,6 +19,14 @@ DEPLOYED APPLICATION
 
 https://rock-trader-2020.herokuapp.com/
 
+![Log In page](images/login.png)
+
+![Sign Up page](images/signup.png)
+
+![My Inventory](images/inv.png)
+
+![Trading Center](images/trading.png)
+
 ![Log In page](images/Log-In.png)
 Format: ![Alt Text](url)
 
