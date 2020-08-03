@@ -3,7 +3,7 @@ var db = require("../models");
 
 module.exports = function (app) {
   // get all posted rocks. We want user to be able to see ALL posts( their own and others)
-  app.get("/api/rock/posts", function (req, res) {
+  app.get("/api/rock/sellerData", function (req, res) {
     db.Rock.findAll({
       where: {
         posted: true
@@ -12,16 +12,18 @@ module.exports = function (app) {
       .then(function (dbRock) {
         res.json(dbRock);
       })
-      .catch(function () {
+      .catch(function (err) {
         res.status(500).end();
+        console.log(err);
       });
   });
 
   // get all users rocks (inventory)
   app.get("/api/user/inventory", function (req, res) {
-    db.Rock.findAll({
-      include: [db.User]
-    })
+    const uid = req.session.passport.user.id;
+    db.Rock.findAll({where: {userId: uid}},
+      {include: db.User}
+    )
       .then(function (dbrocks) {
         res.json(dbrocks);
       })
@@ -35,7 +37,7 @@ module.exports = function (app) {
       where: {
         id: req.params.id
       },
-      include: [db.User]
+      include: db.User
     })
       .then(function (dbrocks) {
         res.json(dbrocks);
@@ -46,7 +48,9 @@ module.exports = function (app) {
   });
   // allow a logged in user to add rock to their inventory
   app.post("/api/user/inventory", function (req, res) {
-    db.Rock.create(req.body)
+    const uid = req.session.passport.user.id;
+    req.body.UserId = uid;
+    db.Rock.create(req.body, {include: db.User})
       .then(function (dbPost) {
         res.json(dbPost);
       })

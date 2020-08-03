@@ -12,7 +12,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    // The password cannot be null
     image: {
       type: DataTypes.STRING,
       validate: {
@@ -20,7 +19,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     description: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      allowNull: false
     },
     posted: {
       type: DataTypes.BOOLEAN,
