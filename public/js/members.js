@@ -52,16 +52,12 @@ $("#empty-div").on("click", function(event){
   event.stopPropagation();
   if(event.target.matches(".trade-rock")){
     var pickedID = $(event.target).val();
-    console.log(pickedID);
-    $.get("/api/user/inventory/" + pickedID).then(function(toPost){
-      toPost.posted = true;
-    }).then($.ajax({
+    $.ajax({
       method: "PUT",
-      url: "/api/rock/sellerData" + pickedID
-    })).then(function(res){
-      console.log(res);
-      $(".trade-rock").remove();
-    });
+      url: "/api/rock/sellerData/" + pickedID
+    }).then(function(){
+      $("<p>").text("This rock is up for trade!").appendTo($(event.target).parent());
+      $(event.target).remove();
+    }).catch(err=> console.log(err));
   }
 });
-  

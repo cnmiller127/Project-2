@@ -1,4 +1,4 @@
-var invGlobal, sellData;
+var invGlobal, sellData, selectedGive, selectedGet;
 var giveRockSelected = false;
 var getRockSelected = false;
 var btnAppended = false;
@@ -41,7 +41,7 @@ $(".giveRock").change(function(event){
     
     for(var i =0; i < invGlobal.length; i++){
       if(targ === invGlobal[i].name){
-        var chosenRock = {name: invGlobal[i].name, image: invGlobal[i].image, description: invGlobal[i].description};
+        var chosenRock = invGlobal[i];
       }
     }
     
@@ -61,6 +61,7 @@ $(".giveRock").change(function(event){
             </div>
         </div>`
     );
+    selectedGive = chosenRock;
     tradeButton();
   }
 });
@@ -75,7 +76,7 @@ $(".getRock").change(function(event){
     var targ = ($(".getSel option:selected").text()).trim();    
     for(var i =0; i < sellData.length; i++){
       if(targ === sellData[i].name){
-        var chosenRock = {name: sellData[i].name, image: sellData[i].image, description: sellData[i].description};
+        var chosenRock = sellData[i];
       }
     }
       
@@ -95,6 +96,7 @@ $(".getRock").change(function(event){
               </div>
           </div>`
     );
+    selectedGet=chosenRock;
     tradeButton();
   }
 });
@@ -112,3 +114,18 @@ function tradeButton(){
   }
 }
 
+$(".container-main").on("click", function(event){
+  event.stopPropagation();
+  if(event.target.matches(".tradeBtn")){
+    console.log(selectedGet);
+    $.ajax({
+      method: "PUT",
+      url: "/api/user/inventory/" + selectedGive.id,
+      data: {id: selectedGet.id, name: selectedGet.name, image: selectedGet.image, description: selectedGet.description, posted: false, UserId: selectedGive.UserId} 
+    }).then( $.ajax({
+      method: "PUT",
+      url: "/api/user/inventory/" + selectedGet.id,
+      data: {id: selectedGive.id, name: selectedGive.name, image: selectedGive.image, description: selectedGive.description, posted: false, UserId: selectedGet.UserId}
+    }));
+  }
+});

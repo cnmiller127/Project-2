@@ -58,7 +58,7 @@ module.exports = function (app) {
   });
   // allow a logged in user to post new rock
   app.post("/api/rock/sellerData", function(req, res) { 
-    const uid = req.session.passport.user.id;
+    var uid = req.session.passport.user.id;
     req.body.UserId = uid;
     db.Rock.create(req.body, {include: db.User})
       .then(function(dbPost) {
@@ -67,8 +67,8 @@ module.exports = function (app) {
       .catch(err => console.log(err));
   });
 
-  app.delete("/api/rock/posts/:id", function (req, res) {
-    db.Post.destroy({
+  app.delete("/api/rock/sellerData/:id", function (req, res) {
+    db.Rock.destroy({
       where: {
         id: req.params.id
       }
@@ -76,8 +76,17 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
-  app.put("/api/rock/sellerData", function (req, res) {
-    db.Post.update(
+  app.put("/api/rock/sellerData/:id", function (req, res) {
+    db.Rock.update(
+      {
+        posted: true},
+      {where: { id: req.params.id}
+      }).then(function (dbUpdate) {
+      res.json(dbUpdate);
+    });
+  });
+  app.put("/api/user/inventory/:id", function (req, res) {
+    db.Rock.update(
       req.body, {
         where: {
           id: req.body.id
