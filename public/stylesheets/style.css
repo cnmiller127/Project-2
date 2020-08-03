@@ -3,7 +3,11 @@ form.login {
   margin-top: 50px;
   color: black;
 }
-
+.navbar-default {
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
 .jumbotron-fluid {
   background-color: gainsboro;
   color: black;

@@ -1,6 +1,10 @@
 $(document).ready(function () {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
+  $.get("/api/user_data").then(function (data) {
+    $(".member-name").text(data.email);
+  });
+
 
   $("#empty-div").append(
     `<div class="card">
@@ -16,9 +20,6 @@ $(document).ready(function () {
       <p>Here is some more information about this rock that is only revealed once clicked on.</p>
     </div>
   </div>`);
-  $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email);
-  });
-
+  
 });
 
