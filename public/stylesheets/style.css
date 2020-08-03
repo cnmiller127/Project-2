@@ -10,7 +10,7 @@ form.login, form.giveForm {
 #empty-div {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: left;
   flex: 0 1 24%;
 }
 
@@ -31,14 +31,18 @@ form.login, form.giveForm {
   background-color: #2bbbad ;
   color: #555555;
 }
+
 img {
   width: 200px;
   height: 200px;
 }
 
-.card {
- width: 33%;
+.card-inventory {
+  width: 20%;
+  margin: 20px;
 };
+
+
 /* Display side by side cards for smaller devices */
 @media screen and (min-width: 40em) {
   #empty-div {
