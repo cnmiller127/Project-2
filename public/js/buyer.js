@@ -3,6 +3,8 @@ var giveRockSelected = false;
 var getRockSelected = false;
 var btnAppended = false;
 $(document).ready(function() {
+  $(".giveSel").append($("<option>").attr("selected", "disabled").text("Please select rock"));
+  $(".getSel").append($("<option>").attr("selected", "disabled").text("Please select rock"));
   fillUserRocks();
   fillSellerRocks();
 
@@ -118,6 +120,7 @@ $(".container-main").on("click", function(event){
   event.stopPropagation();
   if(event.target.matches(".tradeBtn")){
     console.log(selectedGet);
+    //GIVE from current user TO posting first
     $.ajax({
       method: "PUT",
       url: "/api/user/inventory/" + selectedGive.id,
@@ -126,6 +129,18 @@ $(".container-main").on("click", function(event){
       method: "PUT",
       url: "/api/user/inventory/" + selectedGet.id,
       data: {id: selectedGive.id, name: selectedGive.name, image: selectedGive.image, description: selectedGive.description, posted: false, UserId: selectedGet.UserId}
-    }));
+    })).then(function(){
+      btnAppended = false;
+      giveRockSelected = false;
+      getRockSelected = false;
+      $(".giveCard").remove();
+      $(".getCard").remove();
+      $(".tradeBtn").remove();
+      $(".giveOpt").remove();
+      $(".getOpt").remove();
+      alert("TRADE MADE");
+      fillUserRocks();
+      fillSellerRocks();
+    });
   }
 });
