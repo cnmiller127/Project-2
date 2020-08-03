@@ -3,11 +3,24 @@ form.login, form.giveForm {
   margin-top: 50px;
   color: black;
 }
-/* Added styling to logo */
 .navbar-default {
+  background-color:lightgrey ;
+}
+/* Display cards side by side*/
+#empty-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: 0 1 24%;
+}
+
+
+/* Added styling to logo */
+.navbar-default1 {
   height:200px;
   display: flex;
   align-items: center;
+  background-color: lightgrey;
 }
 .jumbotron-fluid {
   background-color: gainsboro;
@@ -26,4 +39,15 @@ img {
 .card {
  width: 33%;
 };
+/* Display side by side cards for smaller devices */
+@media screen and (min-width: 40em) {
+  #empty-div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  }
 
+  #empty-div  {
+      flex: 0 1 calc(25% - 1em);
+  }
+}
