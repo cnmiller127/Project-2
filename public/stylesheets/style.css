@@ -3,8 +3,12 @@ form.login, form.giveForm {
   margin-top: 50px;
   color: black;
 }
-
-
+/* Added styling to logo */
+.navbar-default {
+  height:200px;
+  display: flex;
+  align-items: center;
+}
 .jumbotron-fluid {
   background-color: gainsboro;
   color: black;
