@@ -1,6 +1,6 @@
 # Project-2
 
-USER STORY
+### USER STORY
 
 AS A USER I want to be able to barter and trade rocks with other collectors
 
@@ -25,7 +25,7 @@ WHEN the trade is complete
 THEN the new rock is added to my inventory and the old rock is removed
 
 
-DEPLOYED APPLICATION
+### DEPLOYED APPLICATION
 
 https://rock-trader-2020.herokuapp.com/
 
@@ -39,7 +39,7 @@ https://rock-trader-2020.herokuapp.com/
 ![Trading Center](images/trading.png)
 
 
-TEAM
+### TEAM
 
 Aldo Patino - Backend Engineer
 
