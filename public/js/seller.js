@@ -3,7 +3,8 @@ $(document).ready(function () {
   $("#sellerSubBtn").click(function () {
     const name = $("#name").val()? $("#name").val().trim(): "";
     const image = $("#image").val()? $("#image").val().trim(): "";
-    const desc = $("#desc").val()? $("#desc").val().trim(): "";
+    const description = $("#desc").val()? $("#desc").val().trim(): "";
+    var posted = true;
 
     // if (!name || !image) {
     //  return;
@@ -12,7 +13,8 @@ $(document).ready(function () {
     const data = {
       name,
       image,
-      desc
+      description,
+      posted
     };
 
     console.log("seller data", data);

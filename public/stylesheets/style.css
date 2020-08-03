@@ -1,8 +1,9 @@
 form.signup,
-form.login {
+form.login, form.giveForm {
   margin-top: 50px;
   color: black;
 }
+
 
 .jumbotron-fluid {
   background-color: gainsboro;
