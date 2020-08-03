@@ -130,6 +130,9 @@ $(".container-main").on("click", function(event){
       url: "/api/user/inventory/" + selectedGet.id,
       data: {id: selectedGive.id, name: selectedGive.name, image: selectedGive.image, description: selectedGive.description, posted: false, UserId: selectedGet.UserId}
     })).then(function(){
+      btnAppended = false;
+      giveRockSelected = false;
+      getRockSelected = false;
       $(".giveCard").remove();
       $(".getCard").remove();
       $(".tradeBtn").remove();
