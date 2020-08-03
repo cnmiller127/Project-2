@@ -25,7 +25,7 @@ renderRocks();
 function renderRocks(){
   $.get("/api/user/inventory").then(function(inv){
     for(var i=0; i < inv.length; i++){
-      console.log(inv[i].name);
+      console.log(inv[i].id);
       $("#empty-div").append(
         `<div class="card">
         <div class="card-image waves-effect waves-block waves-light">
@@ -35,7 +35,7 @@ function renderRocks(){
           <span class="card-title activator grey-text text-darken-4">${inv[i].name}<i class="material-icons right">more_vert</i></span>
           
         
-      ${inv[i].posted ? "<p>This rock is up for trade!</p>" : "<button class=\"trade-rock waves-effect waves-light btn-small\">Trade rock</button></div>"}
+      ${inv[i].posted ? "<p>This rock is up for trade!</p>" : `<button class=\"trade-rock waves-effect waves-light btn-small\" value= ${inv[i].id} >Trade rock</button></div>`}
     
         
         <div class="card-reveal">
@@ -47,4 +47,17 @@ function renderRocks(){
     }
   });
 }
+
+$("#empty-div").on("click", function(event){
+  event.stopPropagation();
+  if(event.target.matches(".trade-rock")){
+    var pickedID = $(event.target).val();
+    console.log(pickedID);
+    $.get("/api/user/inventory/" + pickedID).then(function(toPost){
+      $.post("/api/rock/sellerData", toPost).then(function(){
+        $(".trade-rock").remove();
+      });
+    });
+  }
+});
 
