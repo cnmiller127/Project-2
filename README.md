@@ -27,6 +27,17 @@ https://rock-trader-2020.herokuapp.com/
 
 ![Trading Center](images/trading.png)
 
+![Log In page](images/Log-In.png)
+Format: ![Alt Text](url)
+
+![Sign Up page](images/Sign-Up.png)
+Format: ![Alt Text](url)
+
+![My Inventory](images/My-Inventory.png)
+Format: ![Alt Text](url)
+
+![Trading Center](images/Trading-Center.png)
+Format: ![Alt Text](url)
 
 TEAM
 
