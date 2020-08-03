@@ -76,7 +76,7 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
-  app.put("/api/rock/posts", function (req, res) {
+  app.put("/api/rock/sellerData", function (req, res) {
     db.Post.update(
       req.body, {
         where: {

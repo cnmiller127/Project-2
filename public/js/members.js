@@ -54,10 +54,14 @@ $("#empty-div").on("click", function(event){
     var pickedID = $(event.target).val();
     console.log(pickedID);
     $.get("/api/user/inventory/" + pickedID).then(function(toPost){
-      $.post("/api/rock/sellerData", toPost).then(function(){
-        $(".trade-rock").remove();
-      });
+      toPost.posted = true;
+    }).then($.ajax({
+      method: "PUT",
+      url: "/api/rock/sellerData" + pickedID
+    })).then(function(res){
+      console.log(res);
+      $(".trade-rock").remove();
     });
   }
 });
-
+  
