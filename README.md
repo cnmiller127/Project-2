@@ -3,21 +3,32 @@
 USER STORY
 
 AS A USER I want to be able to barter and trade rocks with other collectors
+
 SO THAT I can diversify my own rock collection
 
+
 GIVEN I want to trade a rock for a new one
+
 WHEN I have a rock to trade
+
 THEN I can add a new rock to my inventory
-WHEN I am ready to make a trade,
+
+WHEN I am ready to make a trade
+
 THEN I can add one of my rocks to a marketplace for other rock collectors to see
-WHEN I go to the Trading Center,
+
+WHEN I go to the Trading Center
+
 THEN I can click on one of my rocks and the rock I want to trade for
-WHEN the trade is complete,
+WHEN the trade is complete
+
 THEN the new rock is added to my inventory and the old rock is removed
+
 
 DEPLOYED APPLICATION
 
 https://rock-trader-2020.herokuapp.com/
+
 
 ![Log In page](images/login.png)
 
@@ -27,23 +38,15 @@ https://rock-trader-2020.herokuapp.com/
 
 ![Trading Center](images/trading.png)
 
-![Log In page](images/Log-In.png)
-Format: ![Alt Text](url)
-
-![Sign Up page](images/Sign-Up.png)
-Format: ![Alt Text](url)
-
-![My Inventory](images/My-Inventory.png)
-Format: ![Alt Text](url)
-
-![Trading Center](images/Trading-Center.png)
-Format: ![Alt Text](url)
 
 TEAM
 
 Aldo Patino - Backend Engineer
+
 Himaja Sriramaneni - Frontend Engineer/Backend Engineer
+
 Christian Miller - Backend Engineer
+
 Valeria Gonzalez Leyva - Frontend Engineer
 
 
