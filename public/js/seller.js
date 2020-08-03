@@ -3,7 +3,7 @@ $(document).ready(function () {
   $("#sellerSubBtn").click(function () {
     const name = $("#name").val()? $("#name").val().trim(): "";
     const image = $("#image").val()? $("#image").val().trim(): "";
-    const description = $("#desc").val()? $("#desc").val().trim(): "";
+    const desc = $("#desc").val()? $("#desc").val().trim(): "";
 
     // if (!name || !image) {
     //  return;
@@ -12,9 +12,10 @@ $(document).ready(function () {
     const data = {
       name,
       image,
-      description
+      desc
     };
 
+    console.log("seller data", data);
 
     $.post(
       "/api/rock/sellerData",
@@ -26,5 +27,5 @@ $(document).ready(function () {
         console.log("Error submitting form", sellerdataErr);
       });
   });
-  
+
 });
