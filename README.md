@@ -38,7 +38,6 @@ https://rock-trader-2020.herokuapp.com/
 
 ![Trading Center](images/trading.png)
 
-
 ### TEAM
 
 Aldo Patino - Backend Engineer
